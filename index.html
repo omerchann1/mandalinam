@@ -186,27 +186,46 @@ body{
 <div class="vinyl" onclick="toggleMusic()"></div>
 
 <audio id="music" src="ses.mp3" loop></audio>
-<audio id="paper" src="paper.mp3"></audio>
+<audio id="paper" src="paper.mp3" preload="auto"></audio>
 
 <script>
+/* === AUDIO UNLOCK (MOBİL İÇİN) === */
+let audioUnlocked=false;
 const paper=document.getElementById("paper");
 
+function unlockAudio(){
+  if(audioUnlocked) return;
+  paper.play().then(()=>{
+    paper.pause();
+    paper.currentTime=0;
+    audioUnlocked=true;
+  }).catch(()=>{});
+}
+
+document.addEventListener("touchstart", unlockAudio, { once:true });
+document.addEventListener("click", unlockAudio, { once:true });
+
+/* === OBSERVER + PAPER SOUND === */
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add("show");
-      paper.currentTime=0;
-      paper.play();
+      if(audioUnlocked){
+        paper.currentTime=0;
+        paper.play();
+      }
     }
   });
 },{threshold:0.6});
 
 document.querySelectorAll(".section").forEach(s=>observer.observe(s));
 
+/* === MUSIC === */
 let playing=false;
 function toggleMusic(){
   const music=document.getElementById("music");
   const vinyl=document.querySelector(".vinyl");
+  unlockAudio();
   if(!playing){
     music.play();
     vinyl.classList.add("spin");
