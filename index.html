@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anı Defteri</title>
 
-<!-- EL YAZISI FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
 <style>
@@ -16,7 +15,7 @@ body{
   font-family:Georgia, serif;
   background:
     url("paper-texture.png"),
-    linear-gradient(180deg,#d6c1a0,#b59a6a);
+    linear-gradient(180deg,#d2b48c,#b08a5a);
   background-size:cover;
 }
 
@@ -27,68 +26,68 @@ body{
   scroll-snap-type:y mandatory;
 }
 
-/* SAYFA */
+/* SECTION */
 .section{
   height:100vh;
   display:flex;
   align-items:center;
   scroll-snap-align:start;
-  padding:0 12px;
+  padding:0 14px;
 }
 
-/* KART */
+/* CARD */
 .card{
   width:78%;
-  background:#f4eddc;
+  background:#f5eedc;
   padding:16px 16px 28px;
   border-radius:18px;
-  box-shadow:0 24px 50px rgba(0,0,0,.28);
+  box-shadow:0 26px 55px rgba(0,0,0,.3);
   opacity:0;
   filter:blur(2px);
   transition:
-    opacity 2.8s cubic-bezier(.22,1,.36,1),
-    transform 2.8s cubic-bezier(.22,1,.36,1),
-    filter 2.8s cubic-bezier(.22,1,.36,1);
+    opacity 3s cubic-bezier(.22,1,.36,1),
+    transform 3s cubic-bezier(.22,1,.36,1),
+    filter 3s cubic-bezier(.22,1,.36,1);
 }
 
-/* FOTO */
+/* IMAGE */
 .card img{
   width:100%;
   height:300px;
   object-fit:cover;
   border-radius:12px;
-  filter:sepia(.38) contrast(1.05) brightness(.96);
+  filter:sepia(.4) contrast(1.05) brightness(.95);
 }
 
-/* NOT */
+/* NOTE */
 .note{
   margin-top:14px;
   font-family:'Shadows Into Light', cursive;
   font-size:16px;
   text-align:center;
-  color:#6a5635;
+  color:#6b5534;
 }
 
-/* SOL */
+/* LEFT */
 .left{justify-content:flex-start;}
 .left .card{
-  transform:translateX(-140px) translateY(30px) rotate(-3deg);
+  transform:translateX(-150px) translateY(40px) rotate(-3deg);
 }
 
-/* SAĞ */
+/* RIGHT */
 .right{justify-content:flex-end;}
 .right .card{
-  transform:translateX(140px) translateY(30px) rotate(3deg);
+  transform:translateX(150px) translateY(40px) rotate(3deg);
 }
 
-/* GÖRÜNÜR */
+/* SHOW */
 .show .card{
   opacity:1;
   filter:blur(0);
   transform:translateX(0) translateY(0) rotate(0);
 }
 
-/* PLAK */
+/* VINYL */
 .vinyl{
   position:fixed;
   bottom:26px;
@@ -106,6 +105,7 @@ body{
       #151515 4px
     );
   box-shadow:0 20px 40px rgba(0,0,0,.55);
+  cursor:pointer;
 }
 .vinyl::after{
   content:"";
@@ -115,13 +115,13 @@ body{
   border-radius:50%;
 }
 .spin{
-  animation:spin 4.8s linear infinite;
+  animation:spin 5s linear infinite;
 }
 @keyframes spin{
   to{transform:translateX(-50%) rotate(360deg)}
 }
 
-/* KAPANIŞ */
+/* END NOTE */
 .end{justify-content:center;}
 .end-note{
   width:85%;
@@ -136,7 +136,7 @@ body{
   opacity:0;
   filter:blur(6px);
   transform:translateY(60px);
-  transition:all 3.6s ease;
+  transition:all 4s ease;
 }
 .show .end-note{
   opacity:1;
@@ -150,10 +150,27 @@ body{
 
 <div class="wrapper">
 
-<!-- FOTO ÖRNEK -->
 <div class="section left"><div class="card"><img src="foto1.jpg"><div class="note">Yılın ilk günü</div></div></div>
 <div class="section right"><div class="card"><img src="foto2.jpg"><div class="note">Kaybolduğumuz sokak</div></div></div>
-<!-- foto20’ye kadar devam -->
+<div class="section left"><div class="card"><img src="foto3.jpg"><div class="note">Birlikte yürürken</div></div></div>
+<div class="section right"><div class="card"><img src="foto4.jpg"><div class="note">Sessiz bir akşam</div></div></div>
+<div class="section left"><div class="card"><img src="foto5.jpg"><div class="note">Güldüğümüz an</div></div></div>
+<div class="section right"><div class="card"><img src="foto6.jpg"><div class="note">Soğuk bir gün</div></div></div>
+<div class="section left"><div class="card"><img src="foto7.jpg"><div class="note">Bir an</div></div></div>
+<div class="section right"><div class="card"><img src="foto8.jpg"><div class="note">Hatırladıkça</div></div></div>
+<div class="section left"><div class="card"><img src="foto9.jpg"><div class="note">Yıl ortası</div></div></div>
+<div class="section right"><div class="card"><img src="foto10.jpg"><div class="note">Bir yaz günü</div></div></div>
+
+<div class="section left"><div class="card"><img src="foto11.jpg"><div class="note">Geriye bakınca</div></div></div>
+<div class="section right"><div class="card"><img src="foto12.jpg"><div class="note">Sonbahar</div></div></div>
+<div class="section left"><div class="card"><img src="foto13.jpg"><div class="note">Küçük mutluluk</div></div></div>
+<div class="section right"><div class="card"><img src="foto14.jpg"><div class="note">Bir akşam</div></div></div>
+<div class="section left"><div class="card"><img src="foto15.jpg"><div class="note">Uzun yol</div></div></div>
+<div class="section right"><div class="card"><img src="foto16.jpg"><div class="note">Durup bakınca</div></div></div>
+<div class="section left"><div class="card"><img src="foto17.jpg"><div class="note">Günün sonu</div></div></div>
+<div class="section right"><div class="card"><img src="foto18.jpg"><div class="note">Birlikteyken</div></div></div>
+<div class="section left"><div class="card"><img src="foto19.jpg"><div class="note">Hatıra</div></div></div>
+<div class="section right"><div class="card"><img src="foto20.jpg"><div class="note">Yılın sonu</div></div></div>
 
 <div class="section end">
   <div class="end-note">
@@ -166,15 +183,15 @@ body{
 
 </div>
 
-<div class="vinyl" onclick="toggle()"></div>
+<div class="vinyl" onclick="toggleMusic()"></div>
 
 <audio id="music" src="ses.mp3" loop></audio>
 <audio id="paper" src="paper.mp3"></audio>
 
 <script>
-/* GÖRÜNÜM + KAĞIT SESİ */
 const paper=document.getElementById("paper");
-const obs=new IntersectionObserver(entries=>{
+
+const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add("show");
@@ -182,20 +199,20 @@ const obs=new IntersectionObserver(entries=>{
       paper.play();
     }
   });
-},{threshold:.6});
-document.querySelectorAll(".section").forEach(s=>obs.observe(s));
+},{threshold:0.6});
 
-/* MÜZİK */
+document.querySelectorAll(".section").forEach(s=>observer.observe(s));
+
 let playing=false;
-function toggle(){
-  const m=document.getElementById("music");
-  const v=document.querySelector(".vinyl");
+function toggleMusic(){
+  const music=document.getElementById("music");
+  const vinyl=document.querySelector(".vinyl");
   if(!playing){
-    m.play();
-    v.classList.add("spin");
+    music.play();
+    vinyl.classList.add("spin");
   }else{
-    m.pause();
-    v.classList.remove("spin");
+    music.pause();
+    vinyl.classList.remove("spin");
   }
   playing=!playing;
 }
