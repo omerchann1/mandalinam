@@ -20,7 +20,7 @@ body{
   scroll-snap-type:y mandatory;
 }
 
-/* SAYFA */
+/* HER SAYFA */
 .section{
   height:100vh;
   display:flex;
@@ -61,17 +61,13 @@ body{
 }
 
 /* SOL */
-.left{
-  justify-content:flex-start;
-}
+.left{justify-content:flex-start;}
 .left .card{
   transform:translateX(-120px) rotate(-2.5deg);
 }
 
 /* SAĞ */
-.right{
-  justify-content:flex-end;
-}
+.right{justify-content:flex-end;}
 .right .card{
   transform:translateX(120px) rotate(2.5deg);
 }
@@ -82,7 +78,7 @@ body{
   transform:translateX(0) rotate(0);
 }
 
-/* ===== PLAK ===== */
+/* === PLAK === */
 .vinyl{
   position:fixed;
   bottom:26px;
@@ -121,12 +117,12 @@ body{
 .spin{
   animation:spin 4.5s linear infinite;
 }
-@keyframes spin{to{transform:translateX(-50%) rotate(360deg)}}
+@keyframes spin{
+  to{transform:translateX(-50%) rotate(360deg)}
+}
 
 /* === KAPANIŞ === */
-.end{
-  justify-content:center;
-}
+.end{justify-content:center;}
 .end-note{
   width:85%;
   background:#f8f1df;
@@ -152,8 +148,28 @@ body{
 
 <div class="wrapper">
 
-<!-- FOTO SEKSİYONLARI (20 adet aynen kalıyor) -->
-<!-- ... BURADA ÖNCEKİ 20 FOTO KISMI AYNI ... -->
+<!-- 20 FOTO -->
+<div class="section left"><div class="card"><img src="foto1.jpg"><div class="note">Yılın ilk günü</div></div></div>
+<div class="section right"><div class="card"><img src="foto2.jpg"><div class="note">Kaybolduğumuz sokak</div></div></div>
+<div class="section left"><div class="card"><img src="foto3.jpg"><div class="note">Güldüğümüz an</div></div></div>
+<div class="section right"><div class="card"><img src="foto4.jpg"><div class="note">Sessiz bir akşam</div></div></div>
+<div class="section left"><div class="card"><img src="foto5.jpg"><div class="note">Uzun yürüyüş</div></div></div>
+<div class="section right"><div class="card"><img src="foto6.jpg"><div class="note">Soğuk ama güzel</div></div></div>
+<div class="section left"><div class="card"><img src="foto7.jpg"><div class="note">Birlikteyken</div></div></div>
+<div class="section right"><div class="card"><img src="foto8.jpg"><div class="note">Aniden</div></div></div>
+<div class="section left"><div class="card"><img src="foto9.jpg"><div class="note">Hatırladıkça</div></div></div>
+<div class="section right"><div class="card"><img src="foto10.jpg"><div class="note">Yıl ortası</div></div></div>
+
+<div class="section left"><div class="card"><img src="foto11.jpg"><div class="note">Yaz günü</div></div></div>
+<div class="section right"><div class="card"><img src="foto12.jpg"><div class="note">Güneşli an</div></div></div>
+<div class="section left"><div class="card"><img src="foto13.jpg"><div class="note">Kahkahalar</div></div></div>
+<div class="section right"><div class="card"><img src="foto14.jpg"><div class="note">Sessizlik</div></div></div>
+<div class="section left"><div class="card"><img src="foto15.jpg"><div class="note">Yol</div></div></div>
+<div class="section right"><div class="card"><img src="foto16.jpg"><div class="note">Sonbahar</div></div></div>
+<div class="section left"><div class="card"><img src="foto17.jpg"><div class="note">Bir akşam</div></div></div>
+<div class="section right"><div class="card"><img src="foto18.jpg"><div class="note">Düşünürken</div></div></div>
+<div class="section left"><div class="card"><img src="foto19.jpg"><div class="note">Geriye bakınca</div></div></div>
+<div class="section right"><div class="card"><img src="foto20.jpg"><div class="note">Yılın sonu</div></div></div>
 
 <!-- KAPANIŞ -->
 <div class="section end">
@@ -171,7 +187,7 @@ body{
 <audio id="ses" src="ses.mp3" loop></audio>
 
 <script>
-/* OBSERVER */
+/* SCROLL OBSERVER */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting) e.target.classList.add("show");
@@ -184,8 +200,13 @@ let playing=false;
 function toggle(){
   const s=document.getElementById("ses");
   const v=document.querySelector(".vinyl");
-  if(!playing){s.play();v.classList.add("spin");}
-  else{s.pause();v.classList.remove("spin");}
+  if(!playing){
+    s.play();
+    v.classList.add("spin");
+  }else{
+    s.pause();
+    v.classList.remove("spin");
+  }
   playing=!playing;
 }
 </script>
