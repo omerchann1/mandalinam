@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨</title>
+<title>📻</title>
 
 <style>
 body{
@@ -19,24 +19,24 @@ body{
   top:-10px;
   background:white;
   border-radius:50%;
-  opacity:.8;
+  opacity:.7;
   animation:fall linear infinite;
   pointer-events:none;
   z-index:2;
 }
-@keyframes fall{to{transform:translateY(110vh);}}
+@keyframes fall{to{transform:translateY(120vh);}}
 
 /* Alan */
 .container{
   max-width:430px;
   margin:auto;
-  padding:90px 10px 120px;
+  padding:100px 10px 0;
 }
 
 /* Kart */
 .card{
   position:relative;
-  width:68%;
+  width:65%;
   background:#f3ecd9;
   padding:12px 12px 26px;
   border-radius:16px;
@@ -47,7 +47,6 @@ body{
   transition:all 1.2s ease;
 }
 
-/* Vintage doku */
 .card::after{
   content:"";
   position:absolute;
@@ -57,7 +56,7 @@ body{
   pointer-events:none;
 }
 
-/* Konumlar */
+/* Konum stilleri */
 .s1{transform:translateY(40px) rotate(-3deg) translateX(-24px) scale(.95);}
 .s2{transform:translateY(40px) rotate(2deg) translateX(20px) scale(.95);}
 .s3{transform:translateY(40px) rotate(-1deg) translateX(10px) scale(.95);}
@@ -66,7 +65,7 @@ body{
 
 .card.show{
   opacity:1;
-  transform:translateY(0) rotate(var(--r,0deg)) translateX(var(--x,0)) scale(1);
+  transform:translateY(0) rotate(0) translateX(0) scale(1);
 }
 
 /* Foto */
@@ -87,42 +86,58 @@ body{
   color:#6b5b3e;
 }
 
+/* BİTİŞTEN ÖNCE UZUN BOŞLUK */
+.spacer{
+  height:600px;
+}
+
 /* Kapanış notu */
 .end-note{
   width:80%;
   background:#f8f1df;
-  margin:140px auto 0;
-  padding:36px 28px 50px;
+  margin:0 auto 120px;
+  padding:40px 28px 55px;
   border-radius:18px;
   box-shadow:0 15px 35px rgba(0,0,0,.2);
   font-style:italic;
-  line-height:1.7;
+  line-height:1.8;
   color:#5c4a2d;
   opacity:0;
   transform:translateY(40px);
   transition:all 1.4s ease;
 }
-
 .end-note.show{
   opacity:1;
   transform:translateY(0);
 }
 
-/* Müzik */
-.music{
+/* PLAK BUTONU */
+.player{
   position:fixed;
-  bottom:28px;
+  bottom:25px;
   left:50%;
   transform:translateX(-50%);
-  width:78px;
-  height:78px;
+  width:80px;
+  height:80px;
   border-radius:50%;
-  border:none;
-  background:radial-gradient(circle,#ffb6d5,#ff4f8b);
-  color:white;
-  font-size:26px;
-  box-shadow:0 15px 40px rgba(255,79,139,.5);
+  background:radial-gradient(circle,#333 30%,#111 70%);
+  box-shadow:0 15px 40px rgba(0,0,0,.5);
+  border:4px solid #5a3e2b;
+  cursor:pointer;
   z-index:10;
+}
+.player::after{
+  content:"";
+  position:absolute;
+  inset:18px;
+  background:#cfa56a;
+  border-radius:50%;
+}
+.spin{
+  animation:spin 3s linear infinite;
+}
+@keyframes spin{
+  to{transform:rotate(360deg);}
 }
 </style>
 </head>
@@ -131,55 +146,65 @@ body{
 
 <div class="container">
 
-  <div class="card s1"><img src="foto1.jpg"><div class="note">Çok güzel bir pazar akşamı</div></div>
-  <div class="card s2"><img src="foto2.jpg"><div class="note">Benim çektiklerim daha güzel çıkmıştı</div></div>
-  <div class="card s3"><img src="foto3.jpg"><div class="note">İlk motorumuzu yıkadığımız gün</div></div>
-  <div class="card s4"><img src="foto4.jpg"><div class="note">Maymuşun adını Mahmut koyduk</div></div>
-  <div class="card s5"><img src="foto5.jpg"><div class="note">Oha aşkım bunu takınca daha net görüyorum</div></div>
+<!-- 20 FOTO -->
+<div class="card s1"><img src="foto1.jpg"><div class="note">Yılın ilk günü</div></div>
+<div class="card s2"><img src="foto2.jpg"><div class="note">Kaybolduğumuz sokak</div></div>
+<div class="card s3"><img src="foto3.jpg"><div class="note">Güldüğümüz an</div></div>
+<div class="card s4"><img src="foto4.jpg"><div class="note">Sessiz bir akşam</div></div>
+<div class="card s5"><img src="foto5.jpg"><div class="note">Uzun yürüyüş</div></div>
 
-  <div class="card s2"><img src="foto6.jpg"><div class="note">Çekme beni moments</div></div>
-  <div class="card s1"><img src="foto7.jpg"><div class="note">Hadi ben yattim</div></div>
-  <div class="card s3"><img src="foto8.jpg"><div class="note">Afiyet bal şeker olsun bebişime</div></div>
-  <div class="card s4"><img src="foto9.jpg"><div class="note">Hele hele tipe</div></div>
-  <div class="card s5"><img src="foto10.jpg"><div class="note">Kuşum benim</div></div>
+<div class="card s2"><img src="foto6.jpg"><div class="note">Soğuk ama güzel</div></div>
+<div class="card s1"><img src="foto7.jpg"><div class="note">Birlikteyken</div></div>
+<div class="card s3"><img src="foto8.jpg"><div class="note">Aniden</div></div>
+<div class="card s4"><img src="foto9.jpg"><div class="note">Hatırladıkça</div></div>
+<div class="card s5"><img src="foto10.jpg"><div class="note">Yıl ortası</div></div>
 
-  <div class="end-note">
-    Bu yıl beraber güldük, beraber ağladık,<br><br>
-    Beraber uyuduk, beraber uyandık,<br>
-    Beraber film izleyip beraber şarkı dinledik,
-    Birbirimizi kırıp üzdüğümüzde oldu, kahkahalar attırdığımızda,
-    Ben bi ömrümüz böyle olsun istiyorum.
-    2025'in sonu buraya kadar geldik.<br>
-    Bu bir son değil,<br>
-    sadece bu sayfaların kapanışı.
-  </div>
+<div class="card s1"><img src="foto11.jpg"><div class="note">Yaz günü</div></div>
+<div class="card s2"><img src="foto12.jpg"><div class="note">Güneşli bir an</div></div>
+<div class="card s3"><img src="foto13.jpg"><div class="note">Kahkahalar</div></div>
+<div class="card s4"><img src="foto14.jpg"><div class="note">Sessizlik</div></div>
+<div class="card s5"><img src="foto15.jpg"><div class="note">Yol</div></div>
+
+<div class="card s2"><img src="foto16.jpg"><div class="note">Sonbahar</div></div>
+<div class="card s1"><img src="foto17.jpg"><div class="note">Bir akşam</div></div>
+<div class="card s3"><img src="foto18.jpg"><div class="note">Düşünürken</div></div>
+<div class="card s4"><img src="foto19.jpg"><div class="note">Geriye bakınca</div></div>
+<div class="card s5"><img src="foto20.jpg"><div class="note">Yılın sonu</div></div>
+
+<div class="spacer"></div>
+
+<div class="end-note">
+Buraya kadar geldik.<br><br>
+Bu bir son değil,<br>
+sadece bu sayfaların kapanışı.
+</div>
 
 </div>
 
-<button class="music" onclick="toggle()">▶</button>
+<div class="player" onclick="toggle()"></div>
 <audio id="ses" src="ses.mp3" loop></audio>
 
 <script>
-/* Müzik */
-let playing=false;
-function toggle(){
-  const s=document.getElementById("ses");
-  const b=document.querySelector(".music");
-  playing?(s.pause(),b.innerHTML="▶"):(s.play(),b.innerHTML="⏸");
-  playing=!playing;
-}
-
-/* Scroll animasyon */
+/* Scroll */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting) e.target.classList.add("show");
   });
 },{threshold:.3});
-
 document.querySelectorAll(".card,.end-note").forEach(el=>obs.observe(el));
 
+/* Müzik */
+let playing=false;
+function toggle(){
+  const s=document.getElementById("ses");
+  const p=document.querySelector(".player");
+  if(!playing){ s.play(); p.classList.add("spin"); }
+  else{ s.pause(); p.classList.remove("spin"); }
+  playing=!playing;
+}
+
 /* Kar */
-for(let i=0;i<45;i++){
+for(let i=0;i<40;i++){
   const s=document.createElement("div");
   s.className="snow";
   const size=4+Math.random()*6;
