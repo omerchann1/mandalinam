@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Georgia, serif;
+  background:linear-gradient(180deg,#f7efe1,#f3e8ff);
+  overflow-x:hidden;
+}
+
+/* Kar */
+.snow{
+  position:fixed;
+  top:-10px;
+  background:white;
+  border-radius:50%;
+  opacity:.8;
+  animation:fall linear infinite;
+  pointer-events:none;
+  z-index:2;
+}
+@keyframes fall{to{transform:translateY(110vh);}}
+
+/* Alan */
+.container{
+  max-width:430px;
+  margin:auto;
+  padding:90px 10px 120px;
+}
+
+/* Kart */
+.card{
+  position:relative;
+  width:68%;
+  background:#f3ecd9;
+  padding:12px 12px 26px;
+  border-radius:16px;
+  box-shadow:0 18px 38px rgba(0,0,0,.25);
+  margin:80px auto;
+  opacity:0;
+  transform:translateY(40px) scale(.95);
+  transition:all 1.2s ease;
+}
+
+/* Vintage doku */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.04);
+  border-radius:16px;
+  pointer-events:none;
+}
+
+/* Konumlar */
+.s1{transform:translateY(40px) rotate(-3deg) translateX(-24px) scale(.95);}
+.s2{transform:translateY(40px) rotate(2deg) translateX(20px) scale(.95);}
+.s3{transform:translateY(40px) rotate(-1deg) translateX(10px) scale(.95);}
+.s4{transform:translateY(40px) rotate(3deg) translateX(-12px) scale(.95);}
+.s5{transform:translateY(40px) rotate(0deg) translateX(0) scale(.95);}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0) rotate(var(--r,0deg)) translateX(var(--x,0)) scale(1);
+}
+
+/* Foto */
+.card img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  border-radius:10px;
+  filter:sepia(.35) contrast(1.05) brightness(.95);
+}
+
+/* Not */
+.note{
+  margin-top:10px;
+  text-align:center;
+  font-size:14px;
+  font-style:italic;
+  color:#6b5b3e;
+}
+
+/* Kapanış notu */
+.end-note{
+  width:80%;
+  background:#f8f1df;
+  margin:140px auto 0;
+  padding:36px 28px 50px;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,.2);
+  font-style:italic;
+  line-height:1.7;
+  color:#5c4a2d;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1.4s ease;
+}
+
+.end-note.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Müzik */
+.music{
+  position:fixed;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%);
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  border:none;
+  background:radial-gradient(circle,#ffb6d5,#ff4f8b);
+  color:white;
+  font-size:26px;
+  box-shadow:0 15px 40px rgba(255,79,139,.5);
+  z-index:10;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="card s1"><img src="foto1.jpg"><div class="note">Çok güzel bir pazar akşamı</div></div>
+  <div class="card s2"><img src="foto2.jpg"><div class="note">Benim çektiklerim daha güzel çıkmıştı</div></div>
+  <div class="card s3"><img src="foto3.jpg"><div class="note">İlk motorumuzu yıkadığımız gün</div></div>
+  <div class="card s4"><img src="foto4.jpg"><div class="note">Maymuşun adını Mahmut koyduk</div></div>
+  <div class="card s5"><img src="foto5.jpg"><div class="note">Oha aşkım bunu takınca daha net görüyorum</div></div>
+
+  <div class="card s2"><img src="foto6.jpg"><div class="note">Çekme beni moments</div></div>
+  <div class="card s1"><img src="foto7.jpg"><div class="note">Hadi ben yattim</div></div>
+  <div class="card s3"><img src="foto8.jpg"><div class="note">Afiyet bal şeker olsun bebişime</div></div>
+  <div class="card s4"><img src="foto9.jpg"><div class="note">Hele hele tipe</div></div>
+  <div class="card s5"><img src="foto10.jpg"><div class="note">Kuşum benim</div></div>
+
+  <div class="end-note">
+    Bu yıl beraber güldük, beraber ağladık,<br><br>
+    Beraber uyuduk, beraber uyandık,<br>
+    Beraber film izleyip beraber şarkı dinledik,
+    Birbirimizi kırıp üzdüğümüzde oldu, kahkahalar attırdığımızda,
+    Ben bi ömrümüz böyle olsun istiyorum.
+    2025'in sonu buraya kadar geldik.<br>
+    Bu bir son değil,<br>
+    sadece bu sayfaların kapanışı.
+  </div>
+
+</div>
+
+<button class="music" onclick="toggle()">▶</button>
+<audio id="ses" src="ses.mp3" loop></audio>
+
+<script>
+/* Müzik */
+let playing=false;
+function toggle(){
+  const s=document.getElementById("ses");
+  const b=document.querySelector(".music");
+  playing?(s.pause(),b.innerHTML="▶"):(s.play(),b.innerHTML="⏸");
+  playing=!playing;
+}
+
+/* Scroll animasyon */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+},{threshold:.3});
+
+document.querySelectorAll(".card,.end-note").forEach(el=>obs.observe(el));
+
+/* Kar */
+for(let i=0;i<45;i++){
+  const s=document.createElement("div");
+  s.className="snow";
+  const size=4+Math.random()*6;
+  s.style.width=s.style.height=size+"px";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=(6+Math.random()*6)+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
